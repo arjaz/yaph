@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Sign up!</h1>
+    <p class="lead text-muted">Join this fancy site</p>
+  </div>
+</section>
+
+<form action="{% url 'sign_up' %}" method="POST">
+  {% csrf_token %}
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+    <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+    <input type="password" name="password1" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+    </div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+    <input type="password" name="password2" class="form-control" placeholder="Confirm password" aria-label="Password" aria-describedby="basic-addon1">
+    </div>
+  </div>
+
+  <input class="btn btn-info" type="submit" value="Sign up">
+</form>
+
+{% endblock %}
