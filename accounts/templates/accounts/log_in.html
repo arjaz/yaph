@@ -2,6 +2,37 @@
 
 {% block content %}
 
-<p>Log in</p>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Login</h1>
+    <p class="lead text-muted">You are always welcomed.</p>
+  </div>
+</section>
+
+{% if error %}
+<div class="alert alert-warning" role="alert">
+  <p class="mb-0">
+    {{error}}
+  </p>
+</div>
+{% endif %}
+
+<form action="{% url 'log_in' %}" method="POST">
+  {% csrf_token %}
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+    <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+    <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+    </div>
+  </div>
+
+  <input class="btn btn-info" type="submit" value="Login">
+</form>
 
 {% endblock %}

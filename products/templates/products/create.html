@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Create product</h1>
+    <p class="lead text-muted">You can create a new product here.</p>
+  </div>
+</section>
+
+{% if error %}
+<div class="alert alert-warning" role="alert">
+  <p class="mb-0">
+    {{error}}
+  </p>
+</div>
+{% endif %}
+
+<form action="{% url 'create' %}" enctype="multipart/form-data" method="POST">
+  {% csrf_token %}
+
+  <div class="input-group mb-3">
+    <input type="text" name="title" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1">
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="text" name="url" class="form-control" placeholder="URL" aria-label="url" aria-describedby="basic-addon1">
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">Upload icon</span>
+    </div>
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="inputGroupFile01" name="icon" aria-label="icon" aria-describedby="inputGroupFileAddon01">
+      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+    </div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon02">Upload image</span>
+    </div>
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="inputGroupFile02" name="image" aria-label="image" aria-describedby="inputGroupFileAddon02">
+      <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+    </div>
+  </div>
+
+  <div class="input-group mb-3">
+    <textarea type="textbox" name="body" class="form-control" placeholder="Product description" aria-label="body" aria-describedby="basic-addon1"></textarea>
+  </div>
+
+  <input class="btn btn-info" type="submit" value="Create">
+</form>
+
+{% endblock %}

@@ -9,6 +9,14 @@
   </div>
 </section>
 
+{% if error %}
+<div class="alert alert-warning" role="alert">
+  <p class="mb-0">
+    {{error}}
+  </p>
+</div>
+{% endif %}
+
 <form action="{% url 'sign_up' %}" method="POST">
   {% csrf_token %}
 
